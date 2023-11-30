@@ -11,6 +11,7 @@ class TieBukuro(commands.Bot):
             intents=discord.Intents.all(),
         )
         self.help_command = None
+        self.room_owner_dict = {}
 
     async def setup_hook(self):
         await self.load_extension("jishaku")
