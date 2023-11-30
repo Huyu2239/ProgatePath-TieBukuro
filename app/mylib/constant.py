@@ -9,6 +9,7 @@ DB_URL = os.environ["DB_URL"]
 EXTENTIONS = [
     # extentions here
     "cogs.room_manager",
+    "cogs.count_time"
 ]
 PREFIX = os.environ["PREFIX"]
 TOKEN = os.environ["TOKEN"]
