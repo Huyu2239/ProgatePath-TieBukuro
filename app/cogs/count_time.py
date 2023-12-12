@@ -43,8 +43,11 @@ class CountTime(commands.Cog):
             user = await database.fetch_user(user_id=member.id)
             if user is None:
                 return
+        user.monthly_time += math.ceil(lecture_time.total_seconds())
         user.total_time += math.ceil(lecture_time.total_seconds())
         await database.update_user(user)
+        cog = self.bot.get_cog("ShowRanking")
+        await cog.update()
 
 async def setup(bot):
     await bot.add_cog(CountTime(bot))
