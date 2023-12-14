@@ -29,7 +29,7 @@ class ShowRanking(commands.Cog):
                 continue
             user = self.bot.get_user(row.user_id)
             hours, minutes, seconds = utils.seconds_to_duration(row.monthly_time)
-            embed.add_field(name=f"{rank}位/{user.display_name}", value=f"{hours}時間{minutes}分{seconds}秒", inline=False)
+            embed.add_field(name=f"{rank}位/{user.mention}", value=f"{hours}時間{minutes}分{seconds}秒", inline=False)
         embed.set_footer(text="毎月1日にリセットされます。")
         try:
             await self.message.edit(embed=embed)
@@ -56,7 +56,7 @@ class ShowRanking(commands.Cog):
                 continue
             user = self.bot.get_user(row.user_id)
             hours, minutes, seconds = utils.seconds_to_duration(row.total_time)
-            embed.add_field(name=f"{rank}位/{user.display_name}", value=f"{hours}時間{minutes}分{seconds}秒", inline=False)
+            embed.add_field(name=f"{rank}位/{user.mention}", value=f"{hours}時間{minutes}分{seconds}秒", inline=False)
         embeds.append(embed)
         ranking_data = await database.fetch_monthly_top_users()
         embed = discord.Embed(
@@ -69,7 +69,7 @@ class ShowRanking(commands.Cog):
                 continue
             user = self.bot.get_user(row.user_id)
             hours, minutes, seconds = utils.seconds_to_duration(row.monthly_time)
-            embed.add_field(name=f"{rank}位/{user.display_name}", value=f"{hours}時間{minutes}分{seconds}秒", inline=False)
+            embed.add_field(name=f"{rank}位/{user.mention}", value=f"{hours}時間{minutes}分{seconds}秒", inline=False)
         embeds.append(embed)
         await self.channel.send(f"{now.year}年{now.month}月の結果{now.minute}", embeds=embeds)
         await database.reset_monthly_time()
